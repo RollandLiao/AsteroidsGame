@@ -3,7 +3,7 @@ Spaceship apollo = new Spaceship();
 Star [] stars;
 public void setup() {
   //your code here
-  size(1024, 384);
+  size(1000, 500);
   frameRate(60);
   stars = new Star[(int)(Math.random()*300 + 150)];
   for (int i = 0; i < stars.length; i++) {
