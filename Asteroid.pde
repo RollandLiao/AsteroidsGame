@@ -1,20 +1,25 @@
-public class Spaceship extends Floater  
-{   
-  //your code here
-  public Spaceship() {
+public class Asteroid extends Floater
+{
+  private int roSpeed = (int)(Math.random()*5-2);
+  public Asteroid() {
     corners = 4;
-    int[] xs = {-8, 16, -8, -2};
-    int[] ys = {-8, 0, 8, 0};
+    int[] xs = {-16, 0, 16, 0};
+    int[] ys = {0, 16, 0, -16};
     xCorners = xs;
     yCorners = ys;
 
-    myColor = 255;
-    myCenterX = 100;
-    myCenterY = 100;
-    myDirectionX = 0;
-    myDirectionY = 0;
-    myPointDirection = 0;
-  }   
+    myColor = 100;
+    myCenterX = (int)(Math.random()*800);
+    myCenterY = (int)(Math.random()*600);
+    myDirectionX = (Math.random()*5-2);
+    myDirectionY = (Math.random()*5-2);
+    myPointDirection = (Math.random()*360);
+  }
+  public void move(){
+    myCenterX += myDirectionX;    
+    myCenterY += myDirectionY; 
+    myPointDirection = myPointDirection + roSpeed;
+  }
   
   public void setX(int x) {myCenterX = x;}
   public int getX() {return (int)myCenterX;}
