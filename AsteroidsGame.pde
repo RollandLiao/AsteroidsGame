@@ -4,7 +4,7 @@ Star [] stars;
 Asteroid [] rocks;
 public void setup() {
   //your code here
-  size(1000, 1000);
+  size(1000, 800);
   stars = new Star[(int)(Math.random()*300 + 150)];
   rocks = new Asteroid[(int)(Math.random()*20+5)];
   for (int i = 0; i < stars.length; i++) {
