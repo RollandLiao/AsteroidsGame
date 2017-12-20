@@ -31,7 +31,7 @@ public void draw() {
     rocks.get(iA).move();
   }
   collide();
-  for (int iB = shots.size() - 1;iB > 0; iB--) {
+  for (int iB = shots.size() - 1;iB >= 0; iB--) {
     shots.get(iB).show();
     shots.get(iB).move();
   }
@@ -62,17 +62,19 @@ public void keyPressed(){
 */
 
 public void collide(){
-  for(int i = rocks.size() -1;i>=0;i--){
- // for(int i = 0; i <= rocks.size(); i++){ 
+  for(int i = rocks.size()-1;i >= 0;i--){
     if(dist(rocks.get(i).getX(), rocks.get(i).getY(), apollo.getX(), apollo.getY()) < 20){
       rocks.remove(i);
       rocks.add(new Asteroid());
     }
-    for(int iS = shots.size() - 1;iS>=0;iS--){
-      if(dist(shots.get(iS).getX(), shots.get(iS).getY(), rocks.get(i).getX(), rocks.get(i).getY()) < 10){
-        shots.remove(iS);
-        rocks.remove(i);
+  }
+  for(int iA = shots.size()-2; iA >= 0; iA--){
+    for(int iB = rocks.size()-2; iB>=0; iB--){
+      if(dist(shots.get(iA).getX(), shots.get(iA).getY(), rocks.get(iB).getX(), rocks.get(iB).getY())<10){
+        shots.remove(iA);
+        rocks.remove(iB);
+//        rocks.add(new Asteroid());
       }
-    }  
+    }
   }
 }

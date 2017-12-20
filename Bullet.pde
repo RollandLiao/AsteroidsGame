@@ -6,12 +6,13 @@ public class Bullet extends Floater
     myCenterY = apollo.getY();
     myPointDirection = apollo.getPointDirection();
     dRadians = myPointDirection*(Math.PI/180);
-    myDirectionX = 5 * Math.cos(dRadians) + apollo.getDirectionX();
-    myDirectionY = 5 * Math.cos(dRadians) + apollo.getDirectionY();
+    myDirectionX = 30 * Math.cos(dRadians) + apollo.getDirectionX();
+    myDirectionY = 30 * Math.sin(dRadians) + apollo.getDirectionY();
   }
   
   public void show(){
-    ellipse((float)myCenterX, (float)myCenterY, 10,10);
+    fill(255,255,0);
+    ellipse((float)myCenterX, (float)myCenterY, 5,5);
   }
   
   public void move(){
