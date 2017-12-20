@@ -45,7 +45,7 @@ public void keyPressed(){
 public void collide(){
   for(int i = rocks.size() -1;i>=0;i--){
  // for(int i = 0; i <= rocks.size(); i++){ 
-    if(dist(rocks.get(i).getX(), rocks.get(i).getY(), apollo.getX(), apollo.getY()) < 32){
+    if(dist(rocks.get(i).getX(), rocks.get(i).getY(), apollo.getX(), apollo.getY()) < 20){
       rocks.remove(i);
  //     rocks.add(new Asteroid());
     }
