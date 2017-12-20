@@ -19,6 +19,20 @@ public class Asteroid extends Floater
     myCenterX += myDirectionX;    
     myCenterY += myDirectionY; 
     myPointDirection = myPointDirection + roSpeed;
+    
+    if(myCenterX > width){     
+      myCenterX = 0;    
+    }    
+    else if (myCenterX<0){     
+      myCenterX = width;    
+    }    
+    
+    if(myCenterY > height){    
+      myCenterY = 0;    
+    }   
+    else if (myCenterY < 0){     
+      myCenterY = height;    
+    }   
   }
   
   public void setX(int x) {myCenterX = x;}

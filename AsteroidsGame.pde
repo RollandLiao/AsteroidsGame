@@ -1,17 +1,18 @@
 //your variable declarations here
 Spaceship apollo = new Spaceship();
 Star [] stars;
-Asteroid [] rocks;
+ArrayList<Asteroid> rocks;
 public void setup() {
   //your code here
-  size(1000, 800);
+  size(800, 600);
   stars = new Star[(int)(Math.random()*300 + 150)];
-  rocks = new Asteroid[(int)(Math.random()*20+5)];
+  rocks = new ArrayList<Asteroid>();
+  //new Asteroid[(int)(Math.random()*20+5)];
   for (int i = 0; i < stars.length; i++) {
     stars[i] = new Star();
   }
-  for (int iA = 0; iA < rocks.length; iA++) {
-    rocks[iA] = new Asteroid();
+  for (int iA = 0; iA < 20; iA++) {
+    rocks.add(new Asteroid());
   }
 }
 public void draw() {
@@ -22,10 +23,11 @@ public void draw() {
   for (int i = 0; i < stars.length; i++) {
     stars[i].show();
   }
-  for (int iA = 0; iA < rocks.length; iA++) {
-    rocks[iA].show();
-    rocks[iA].move();
+  for (int iA = 0; iA < rocks.size(); iA++) {
+    rocks.get(iA).show();
+    rocks.get(iA).move();
   }
+  collide();
 }
 public void keyPressed(){
   if (key == 'a'){apollo.turn(-5);}
@@ -38,5 +40,14 @@ public void keyPressed(){
     apollo.setDirectionX(0);
     apollo.setDirectionY(0);
     apollo.setPointDirection(0);
+  }
+}
+public void collide(){
+  for(int i = rocks.size() -1;i>=0;i--){
+ // for(int i = 0; i <= rocks.size(); i++){ 
+    if(dist(rocks.get(i).getX(), rocks.get(i).getY(), apollo.getX(), apollo.getY()) < 32){
+      rocks.remove(i);
+ //     rocks.add(new Asteroid());
+    }
   }
 }
