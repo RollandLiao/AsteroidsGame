@@ -42,6 +42,7 @@ public void keyPressed(){
     apollo.setPointDirection(0);
   }
 }
+<<<<<<< HEAD
 public void collide(){
   for(int i = rocks.size() -1;i>=0;i--){
  // for(int i = 0; i <= rocks.size(); i++){ 
@@ -51,3 +52,5 @@ public void collide(){
     }
   }
 }
+=======
+>>>>>>> 8fe1726424e6173e8bac3eb10186f8e906d27300
