@@ -1,12 +1,14 @@
 //your variable declarations here
 Spaceship apollo = new Spaceship();
 Star [] stars;
+ArrayList<Bullet> shots;
 ArrayList<Asteroid> rocks;
 public void setup() {
   //your code here
   size(800, 600);
   stars = new Star[(int)(Math.random()*300 + 150)];
   rocks = new ArrayList<Asteroid>();
+  shots = new ArrayList<Bullet>();
   //new Asteroid[(int)(Math.random()*20+5)];
   for (int i = 0; i < stars.length; i++) {
     stars[i] = new Star();
@@ -20,6 +22,7 @@ public void draw() {
   background(0);
   apollo.move();
   apollo.show(); 
+  
   for (int i = 0; i < stars.length; i++) {
     stars[i].show();
   }
@@ -28,6 +31,10 @@ public void draw() {
     rocks.get(iA).move();
   }
   collide();
+  for (int iB = shots.size() - 1;iB > 0; iB--) {
+    shots.get(iB).show();
+    shots.get(iB).move();
+  }
 }
 public void keyPressed(){
   if (key == 'a'){apollo.turn(-5);}
@@ -41,14 +48,31 @@ public void keyPressed(){
     apollo.setDirectionY(0);
     apollo.setPointDirection(0);
   }
+  if (key == ' '){
+    shots.add(new Bullet(apollo));
+  }
 }
+
+/*public void keyReleased(){
+  if (keyCode == 'a'){apollo.turn(0);}
+  if (keyCode == 's'){apollo.accelerate(0);}
+  if (keyCode == 'd'){apollo.turn(0);}
+  if (keyCode == 'w'){apollo.accelerate(0);}
+}
+*/
 
 public void collide(){
   for(int i = rocks.size() -1;i>=0;i--){
  // for(int i = 0; i <= rocks.size(); i++){ 
     if(dist(rocks.get(i).getX(), rocks.get(i).getY(), apollo.getX(), apollo.getY()) < 20){
       rocks.remove(i);
- //     rocks.add(new Asteroid());
+      rocks.add(new Asteroid());
     }
+    for(int iS = shots.size() - 1;iS>=0;iS--){
+      if(dist(shots.get(iS).getX(), shots.get(iS).getY(), rocks.get(i).getX(), rocks.get(i).getY()) < 10){
+        shots.remove(iS);
+        rocks.remove(i);
+      }
+    }  
   }
 }
