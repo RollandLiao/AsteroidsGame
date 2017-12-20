@@ -70,7 +70,7 @@ public void collide(){
   }
   for(int iA = shots.size()-2; iA >= 0; iA--){
     for(int iB = rocks.size()-2; iB>=0; iB--){
-      if(dist(shots.get(iA).getX(), shots.get(iA).getY(), rocks.get(iB).getX(), rocks.get(iB).getY())<10){
+      if(dist(shots.get(iA).getX(), shots.get(iA).getY(), rocks.get(iB).getX(), rocks.get(iB).getY())<15){
         shots.remove(iA);
         rocks.remove(iB);
 //        rocks.add(new Asteroid());
